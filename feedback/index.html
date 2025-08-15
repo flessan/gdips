@@ -130,8 +130,6 @@
 
         <div class="actions">
           <button id="refreshBtn" class="btn ghost" title="Refresh data"><i class="fas fa-arrows-rotate"></i> Refresh</button>
-          <!-- keep filter toggle but default is OFF (all-time) -->
-          <button id="toggle7" class="toggle" title="Filter to last 7 days (toggle)"><i class="fas fa-calendar-week"></i><span class="small">7 days</span></button>
           <button id="exportCsv" class="btn"><i class="fas fa-file-csv"></i> Export CSV</button>
         </div>
       </div>
@@ -242,7 +240,6 @@
     let cached = null;           // full dataset (with __id)
     let autoRefresh = false;
     let autoTimer = null;
-    let filter7 = false;         // default OFF => all-time
     const SEARCH_INPUT = document.getElementById('searchInput');
 
     // small helpers
@@ -351,22 +348,6 @@
         return [];
       }
     }
-
-    // Apply search and optional 7-day filter to cached set, then render
-    function applyFiltersAndSearch(){
-      const q = (SEARCH_INPUT.value || '').trim().toLowerCase();
-      if(!cached) return;
-      let rows = cached.slice();
-
-      if(filter7){
-        const week = new Date(); week.setDate(week.getDate() - 7);
-        rows = rows.filter(r => {
-          const ts = r['Timestamp'] || r['timestamp'] || '';
-          if(!ts) return false;
-          const d = new Date(ts);
-          return !isNaN(d) && d >= week;
-        });
-      }
 
       if(q){
         rows = rows.filter(r => {
