@@ -130,8 +130,6 @@
 
         <div class="actions">
           <button id="refreshBtn" class="btn ghost" title="Refresh data"><i class="fas fa-arrows-rotate"></i> Refresh</button>
-          <!-- keep filter toggle but default is OFF (all-time) -->
-          <button id="toggle7" class="toggle" title="Filter to last 7 days (toggle)"><i class="fas fa-calendar-week"></i><span class="small">7 days</span></button>
           <button id="exportCsv" class="btn"><i class="fas fa-file-csv"></i> Export CSV</button>
         </div>
       </div>
@@ -435,15 +433,6 @@
       modal.classList.remove('open');
       modal.setAttribute('aria-hidden','true');
     }
-
-    // toggle 7-day filter
-    document.getElementById('toggle7').addEventListener('click', (e)=>{
-      filter7 = !filter7;
-      e.currentTarget.style.background = filter7 ? 'linear-gradient(90deg,var(--brand),var(--accent))' : '';
-      e.currentTarget.style.color = filter7 ? '#fff' : '';
-      applyFiltersAndSearch();
-      showToast(filter7 ? 'Filtering to last 7 days' : 'Showing all feedback');
-    });
 
     // auto refresh toggle
     document.getElementById('toggleAuto').addEventListener('click', ()=>{
