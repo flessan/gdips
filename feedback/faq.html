@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrGDPS - Info</title>
+
+  <!-- Font Pusab -->
+  <style>
+    @font-face {
+      font-family: 'Pusab';
+      src: url('https://fless.rf.gd/gauntlet/assets/Pusab.ttf') format('truetype');
+      font-display: swap;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: 'Pusab', sans-serif;
+      background: #000;
+      color: #eee;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      padding: 2rem;
+    }
+    /* moving background */
+    body::before {
+      content:"";
+      position:fixed; top:0; left:0;
+      width:200%; height:200%;
+      background:url('https://fless.rf.gd/gauntlet/assets/img/bg-pattern.png') repeat;
+      background-size:contain;
+      opacity:0.05;
+      animation:scrollBG 60s linear infinite;
+      z-index:-1;
+    }
+    @keyframes scrollBG {
+      from { transform:translate(0,0); }
+      to   { transform:translate(-50%,-50%); }
+    }
+
+    h1 {
+      text-align:center;
+      color:#fff;
+      margin-bottom:1.5rem;
+      font-size:2rem;
+    }
+    .tabs {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:0.5rem;
+      margin-bottom:1.5rem;
+    }
+    .tab {
+      background:#222;
+      color:#ccc;
+      padding:0.6rem 1rem;
+      border-radius:6px;
+      cursor:pointer;
+      transition:background 0.2s,color 0.2s;
+    }
+    .tab.active,
+    .tab:hover {
+      background:#eee;
+      color:#000;
+    }
+
+    .content {
+      display:none;
+      max-width:800px;
+      margin:0 auto 2rem;
+      text-align:left;
+      background:#111;
+      padding:1.2rem;
+      border-radius:8px;
+    }
+    .content.active {
+      display:block;
+    }
+    .content h2 {
+      color:#fff;
+      margin-bottom:0.5rem;
+    }
+    .content p, .content li {
+      color:#ddd;
+      margin-bottom:0.75rem;
+      line-height:1.4;
+    }
+    .content a {
+      color:#4fc3f7;
+      text-decoration:underline;
+    }
+    .content ul {
+      list-style:disc;
+      padding-left:1.2rem;
+    }
+
+    .back {
+      text-align:center;
+      margin-bottom:2rem;
+    }
+    .btn {
+      display:inline-block;
+      background:#fff;
+      color:#000;
+      padding:0.6rem 1.2rem;
+      border-radius:6px;
+      text-decoration:none;
+      font-weight:bold;
+      margin:0.25rem;
+      transition:background 0.2s,transform 0.1s;
+    }
+    .btn:hover {
+      background:#ddd;
+      transform:translateY(-2px);
+    }
+
+    footer {
+      text-align:center;
+      color:#777;
+      font-size:0.75rem;
+      margin-top:auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tab Info FrGDPS</h1>
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('faq', this)">FAQ</div>
+    <div class="tab" onclick="showTab('about', this)">Tentang</div>
+    <div class="tab" onclick="showTab('credits', this)">Credits</div>
+    <div class="tab" onclick="showTab('policy', this)">Kebijakan</div>
+    <div class="tab" onclick="showTab('privacy', this)">Privasi</div>
+  </div>
+
+  <div id="faq" class="content active">
+    <h2>FAQ</h2>
+    <p><strong>Q: Apa itu FrGDPS?</strong><br>FrGDPS (Freedom Geometry Dash Private Server) adalah server modifikasi yang bebas berekspresi.</p>
+    <p><strong>Q: Apakah ini gratis?</strong><br>Ya, sepenuhnya gratis untuk dimainkan.</p>
+    <p><strong>Q: Versi PC/iOS?</strong><br>Untuk sementara, gunakan <a href="https://geode-sdk.org/mods/km7dev.gdps-switcher?version=1.1.3" target="_blank">GDPS Switcher</a> di Geode.</p>
+  </div>
+
+  <div id="about" class="content">
+    <h2>Tentang Kami</h2>
+    <p>FrGDPS dikembangkan oleh dua orang yang ingin membuat server Geometry Dash bebas berekspresi.</p>
+  </div>
+
+  <div class="back">
+    <a href="/" class="btn">Beranda</a>
+    <a href="/download.php" class="btn">Download</a>
+    <a href="/sdk/" class="btn">Sosial</a>
+  </div>
+
+  <footer>&copy; <span id="year"></span> FreedomGDPS!!11 by Fless & Amelia</footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Tab switching
+    function showTab(id, el) {
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.content').forEach(c=>c.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>
