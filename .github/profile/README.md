@@ -9,6 +9,6 @@ You can download the GDPS in [here](https://fless.ps.fhgdps.com).<br>Platforms t
 ***
 ## Repositories
 [website](https://github.com/flessan/FrGDPS) - The FrGDPS website source code.<br>
-[download](https://github.com/PrismGDPS/download) - Used for FrGDPS downloads.<br>
+[download](https://fless.netlify.app/download) - Used for FrGDPS downloads.<br>
 [lists](https://github.com/flessan/FrGDPS/tree/main/demonlist) - The FrGDPS lists source code. <br> <br>
 ( Credit [@yeahhcolix-chan](https://github.com/YeahhColix) )
