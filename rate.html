@@ -1,208 +1,272 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GDIPS - Standar Rate</title>
-  <link rel="icon" href="https://fless.ps.fhgdps.com/dashboard/icon.png" type="image/png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="aset/batik.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDIPS - Standar Rate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/batik.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9138741540234649" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
     <header>
-      <div class="logo-container">
-        <div class="logo">
-          <img src="https://fless.ps.fhgdps.com/dashboard/icon.png" alt="GDIPS Logo">
-        </div>
-      </div>
-      
-      <h1 class="title">Standar Rate</h1>
-      <p class="subtitle">Panduan rate level dari Star hingga Mythic</p>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-hashtag"></i>
+                <span>GDIPS</span>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu navigasi">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/"><i class="fas fa-home"></i> Beranda</a></li>
+                <li><a href='/tools'><i class="fas fa-tools"></i> Alat</a></li>
+                <li><a href='/rate'><i class="fas fa-star"></i> Rating</a></li>
+                <li><a href='/download'><i class="fas fa-download"></i> Unduh</a></li>
+            </ul>
+        </nav>
     </header>
+    
+    <section class="hero">
+        <!-- Floating decorative elements -->
+        <div class="floating" style="font-size: 2rem;">⭐</div>
+        <div class="floating" style="font-size: 1.7rem;">🇮🇩</div>
+        <div class="floating" style="font-size: 1.3rem;">🏆</div>
+        
+        <div class="icon-container">
+            <img src="https://fless.ps.fhgdps.com/dashboard/icon.png" class="icon" alt="GDIPS Logo">
+        </div>
+        <h2>Standar Rate</h2>
+        <p>Panduan rate level dari Star hingga Mythic</p>
+    </section>
 
-    <!-- Main Content -->
-    <main>
-      <div style="text-align:center; margin-bottom: 30px;">
-        <a href="/index.html" class="back-btn">
-          <i class="fas fa-arrow-left"></i> Kembali ke Menu
-        </a>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon">
-            <i class="fas fa-calculator"></i>
-          </div>
-          <h2 class="card-title">Kalkulator Prediksi Rate</h2>
+    <div class="credits-container">
+        <!-- Kalkulator Prediksi Rate -->
+        <div class="credit-card">
+            <span class="role">Kalkulator Rate</span>
+            <h3>Prediksi Rate Level</h3>
+            <p>Hitung prediksi rate level berdasarkan nilai layout, deco, dan gameplay.</p>
+            
+            <form id="predictor" style="margin-top: 15px;">
+                <div style="margin-bottom: 10px;">
+                    <input type="number" id="layout" placeholder="Layout (%)" max="100" min="0" required 
+                           style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); 
+                                  background-color: var(--card-bg); color: var(--light); font-family: 'JetBrains Mono', monospace;">
+                </div>
+                <div style="margin-bottom: 10px;">
+                    <input type="number" id="deco" placeholder="Deco (%)" max="100" min="0" required 
+                           style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); 
+                                  background-color: var(--card-bg); color: var(--light); font-family: 'JetBrains Mono', monospace;">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <input type="number" id="gameplay" placeholder="Gameplay (%)" max="100" min="0" required 
+                           style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); 
+                                  background-color: var(--card-bg); color: var(--light); font-family: 'JetBrains Mono', monospace;">
+                </div>
+                <button type="submit" class="view-btn" style="width: 100%; justify-content: center;">
+                    <i class="fas fa-calculator"></i> Prediksi Rate
+                </button>
+                <div id="predictionResult" style="margin-top: 15px; text-align: center; font-weight: 500; color: var(--accent);"></div>
+            </form>
         </div>
         
-        <form id="predictor" class="predictor-form">
-          <div class="input-group">
-            <div class="input-wrapper">
-              <i class="fas fa-th input-icon"></i>
-              <input type="number" id="layout" placeholder="Layout (%)" max="100" min="0" required class="input-field">
-            </div>
-          </div>
-          
-          <div class="input-group">
-            <div class="input-wrapper">
-              <i class="fas fa-palette input-icon"></i>
-              <input type="number" id="deco" placeholder="Deco (%)" max="100" min="0" required class="input-field">
-            </div>
-          </div>
-          
-          <div class="input-group">
-            <div class="input-wrapper">
-              <i class="fas fa-gamepad input-icon"></i>
-              <input type="number" id="gameplay" placeholder="Gameplay (%)" max="100" min="0" required class="input-field">
-            </div>
-          </div>
-          
-          <button type="submit" class="btn btn-primary">
-            <i class="fas fa-magic"></i> Prediksi Rate
-          </button>
-          
-          <div id="predictionResult" class="prediction-result"></div>
-        </form>
-      </div>
-
-      <div class="rate-container">
         <!-- Star Rate -->  
-        <div class="rate-box">  
-          <h2>Star Rate (Normal)</h2>  
-          <div class="progress-group">  
-            <label><span>Layout</span><span>30%</span></label>  
-            <div class="progress-bar"><span style="width: 30%"></span></div>  
-          </div>  
-          <div class="progress-group">  
-            <label><span>Deco</span><span>10%</span></label>  
-            <div class="progress-bar"><span style="width: 10%"></span></div>  
-          </div>  
-          <div class="progress-group">  
-            <label><span>Gameplay</span><span>35%</span></label>  
-            <div class="progress-bar"><span style="width: 35%"></span></div>  
-          </div>  
-          <p>Level harus bisa dimainkan dari awal sampai akhir. Fitur 2.2 tidak wajib, tapi kalau dipakai harus bermanfaat. Cocok untuk level simple tapi fun!</p>  
-        </div>  
+        <div class="credit-card">
+            <span class="role">Star Rate</span>
+            <h3>Normal</h3>
+            <p>Level harus bisa dimainkan dari awal sampai akhir. Fitur 2.2 tidak wajib, tapi kalau dipakai harus bermanfaat. Cocok untuk level simple tapi fun!</p>
+            
+            <div style="margin-top: 15px;">
+                <div class="progress-group">  
+                    <label><span>Layout</span><span>30%</span></label>  
+                    <div class="progress-bar"><span style="width: 30%"></span></div>  
+                </div>  
+                <div class="progress-group">  
+                    <label><span>Deco</span><span>10%</span></label>  
+                    <div class="progress-bar"><span style="width: 10%"></span></div>  
+                </div>  
+                <div class="progress-group">  
+                    <label><span>Gameplay</span><span>35%</span></label>  
+                    <div class="progress-bar"><span style="width: 35%"></span></div>  
+                </div>
+            </div>
+        </div>
 
         <!-- Featured -->  
-        <div class="rate-box">  
-          <h2>Featured</h2>  
-          <div class="progress-group">  
-            <label><span>Layout</span><span>40%</span></label>  
-            <div class="progress-bar"><span style="width: 40%"></span></div>  
-          </div>  
-          <div class="progress-group">  
-            <label><span>Deco</span><span>40%</span></label>  
-            <div class="progress-bar"><span style="width: 40%"></span></div>  
-          </div>  
-          <div class="progress-group">  
-            <label><span>Gameplay</span><span>40%</span></label>  
-            <div class="progress-bar"><span style="width: 40%"></span></div>  
-          </div>  
-          <p>Gameplay harus fun dan seimbang. Gunakan fitur 2.2 secara efektif. Dekorasi harus terkonsep dan tidak asal.</p>  
-        </div>  
+        <div class="credit-card">
+            <span class="role">Featured</span>
+            <h3>Unggulan</h3>
+            <p>Gameplay harus fun dan seimbang. Gunakan fitur 2.2 secara efektif. Dekorasi harus terkonsep dan tidak asal.</p>
+            
+            <div style="margin-top: 15px;">
+                <div class="progress-group">  
+                    <label><span>Layout</span><span>40%</span></label>  
+                    <div class="progress-bar"><span style="width: 40%"></span></div>  
+                </div>  
+                <div class="progress-group">  
+                    <label><span>Deco</span><span>40%</span></label>  
+                    <div class="progress-bar"><span style="width: 40%"></span></div>  
+                </div>  
+                <div class="progress-group">  
+                    <label><span>Gameplay</span><span>40%</span></label>  
+                    <div class="progress-bar"><span style="width: 40%"></span></div>  
+                </div>
+            </div>
+        </div>
 
         <!-- Epic -->  
-        <div class="rate-box">  
-          <h2>Epic</h2>  
-          <div class="progress-group">  
-            <label><span>Layout</span><span>45%</span></label>  
-            <div class="progress-bar"><span style="width: 45%"></span></div>  
-          </div>  
-          <div class="progress-group">  
-            <label><span>Deco</span><span>55%</span></label>  
-            <div class="progress-bar"><span style="width: 55%"></span></div>  
-          </div>  
-          <div class="progress-group">  
-            <label><span>Gameplay</span><span>65%</span></label>  
-            <div class="progress-bar"><span style="width: 65%"></span></div>  
-          </div>  
-          <p>Gameplay seru, jelas, dan minim chokepoint. Fitur 2.2 harus kelihatan jelas. Warna & dekorasi rapi dan enak dilihat.</p>  
-        </div>  
+        <div class="credit-card">
+            <span class="role">Epic</span>
+            <h3>Epic</h3>
+            <p>Gameplay seru, jelas, dan minim chokepoint. Fitur 2.2 harus kelihatan jelas. Warna & dekorasi rapi dan enak dilihat.</p>
+            
+            <div style="margin-top: 15px;">
+                <div class="progress-group">  
+                    <label><span>Layout</span><span>45%</span></label>  
+                    <div class="progress-bar"><span style="width: 45%"></span></div>  
+                </div>  
+                <div class="progress-group">  
+                    <label><span>Deco</span><span>55%</span></label>  
+                    <div class="progress-bar"><span style="width: 55%"></span></div>  
+                </div>  
+                <div class="progress-group">  
+                    <label><span>Gameplay</span><span>65%</span></label>  
+                    <div class="progress-bar"><span style="width: 65%"></span></div>  
+                </div>
+            </div>
+        </div>
 
         <!-- Legendary -->  
-        <div class="rate-box">  
-          <h2>Legendary</h2>  
-          <div class="progress-group">  
-            <label><span>Layout</span><span>60%</span></label>  
-            <div class="progress-bar"><span style="width: 60%"></span></div>  
-          </div>  
-          <div class="progress-group">  
-            <label><span>Deco</span><span>75%</span></label>  
-            <div class="progress-bar"><span style="width: 75%"></span></div>  
-          </div>  
-          <div class="progress-group">  
-            <label><span>Gameplay</span><span>85%</span></label>  
-            <div class="progress-bar"><span style="width: 85%"></span></div>  
-          </div>  
-          <p>Level ini harus top-tier. Efek keren, playable di semua device. Gameplay mantap, unik, dan menarik.</p>  
-        </div>  
+        <div class="credit-card">
+            <span class="role">Legendary</span>
+            <h3>Legendaris</h3>
+            <p>Level ini harus top-tier. Efek keren, playable di semua device. Gameplay mantap, unik, dan menarik.</p>
+            
+            <div style="margin-top: 15px;">
+                <div class="progress-group">  
+                    <label><span>Layout</span><span>60%</span></label>  
+                    <div class="progress-bar"><span style="width: 60%"></span></div>  
+                </div>  
+                <div class="progress-group">  
+                    <label><span>Deco</span><span>75%</span></label>  
+                    <div class="progress-bar"><span style="width: 75%"></span></div>  
+                </div>  
+                <div class="progress-group">  
+                    <label><span>Gameplay</span><span>85%</span></label>  
+                    <div class="progress-bar"><span style="width: 85%"></span></div>  
+                </div>
+            </div>
+        </div>
 
         <!-- Mythic -->  
-        <div class="rate-box">  
-          <h2>Mythic</h2>  
-          <div class="progress-group">  
-            <label><span>Layout</span><span>89%</span></label>  
-            <div class="progress-bar"><span style="width: 89%"></span></div>  
-          </div>  
-          <div class="progress-group">  
-            <label><span>Deco</span><span>89%</span></label>  
-            <div class="progress-bar"><span style="width: 89%"></span></div>  
-          </div>  
-          <div class="progress-group">  
-            <label><span>Gameplay</span><span>89%</span></label>  
-            <div class="progress-bar"><span style="width: 89%"></span></div>  
-          </div>  
-          <p>Nyaris sempurna. Kreatif, fun, dekorasi beda dari yang lain. Voting khusus akan diadakan untuk level Mythic.</p>  
+        <div class="credit-card">
+            <span class="role">Mythic</span>
+            <h3>Mitik</h3>
+            <p>Nyaris sempurna. Kreatif, fun, dekorasi beda dari yang lain. Voting khusus akan diadakan untuk level Mythic.</p>
+            
+            <div style="margin-top: 15px;">
+                <div class="progress-group">  
+                    <label><span>Layout</span><span>89%</span></label>  
+                    <div class="progress-bar"><span style="width: 89%"></span></div>  
+                </div>  
+                <div class="progress-group">  
+                    <label><span>Deco</span><span>89%</span></label>  
+                    <div class="progress-bar"><span style="width: 89%"></span></div>  
+                </div>  
+                <div class="progress-group">  
+                    <label><span>Gameplay</span><span>89%</span></label>  
+                    <div class="progress-bar"><span style="width: 89%"></span></div>  
+                </div>
+            </div>
         </div>
-      </div>
-    </main>
+    </div>
 
-    <!-- Footer -->
     <footer>
-      <p>Rate System oleh <span>Fless</span> | GDIPS &copy; <span id="year"></span></p>
+        <p>Dibuat dengan <span class="heart">❤️</span> | Semua Hak Dilindungi | <a href="#"><span>GDIPS 2025</span></a></p>
     </footer>
-  </div>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    window.addEventListener("load", () => {
-      document.querySelectorAll(".progress-bar span").forEach(bar => {
-        const width = bar.style.width;
-        bar.style.width = "0";
-        setTimeout(() => bar.style.width = width, 100);
-      });
-    });
-
-    document.getElementById("predictor").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const l = +document.getElementById("layout").value;
-      const d = +document.getElementById("deco").value;
-      const g = +document.getElementById("gameplay").value;
-      const avg = (l + d + g) / 3;
-      let result = "";
-      if (avg >= 88) result = "Mythic";
-      else if (avg >= 75) result = "Legendary";
-      else if (avg >= 60) result = "Epic";
-      else if (avg >= 40) result = "Featured";
-      else result = "Star";
-      
-      const resultElement = document.getElementById("predictionResult");
-      resultElement.textContent = `Prediksi Rate: ${result}`;
-      
-      // Add animation class
-      resultElement.classList.add("show");
-      
-      // Remove animation class after animation completes
-      setTimeout(() => {
-        resultElement.classList.remove("show");
-      }, 3000);
-    });
-  </script>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Add sparkle effects randomly
+        function addSparkles() {
+            const hero = document.querySelector('.hero');
+            
+            for (let i = 0; i < 15; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.top = `${Math.random() * 100}%`;
+                sparkle.style.animationDelay = `${Math.random() * 2}s`;
+                hero.appendChild(sparkle);
+            }
+        }
+        
+        // Run after page loads
+        window.addEventListener('load', addSparkles);
+        
+        // Intersection Observer for card animations
+        const cards = document.querySelectorAll('.credit-card');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+        
+        // Progress bar animation
+        window.addEventListener("load", () => {
+            document.querySelectorAll(".progress-bar span").forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = "0";
+                setTimeout(() => bar.style.width = width, 100);
+            });
+        });
+        
+        // Rate predictor
+        document.getElementById("predictor").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const l = +document.getElementById("layout").value;
+            const d = +document.getElementById("deco").value;
+            const g = +document.getElementById("gameplay").value;
+            const avg = (l + d + g) / 3;
+            let result = "";
+            if (avg >= 88) result = "Mythic";
+            else if (avg >= 75) result = "Legendary";
+            else if (avg >= 60) result = "Epic";
+            else if (avg >= 40) result = "Featured";
+            else result = "Star";
+            
+            const resultElement = document.getElementById("predictionResult");
+            resultElement.textContent = `Prediksi Rate: ${result}`;
+            resultElement.style.animation = "pulse 1s ease";
+            
+            setTimeout(() => {
+                resultElement.style.animation = "";
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
