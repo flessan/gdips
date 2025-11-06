@@ -1,444 +1,568 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-site-verification" content="ma9ixtL04ZaSWjvOhxWdfkyeqDctJDTlz8WM6bIMzG0" />
-  <meta name="description" content="FreedomGDPS!!11 - Geometry Dash Private Server paling bebas dari Indonesia." />
-  <title>FreedomGDPS!!11</title>
-  <link rel="icon" href="https://fless.ps.fhgdps.com/dashboard/icon.png" />
-  <link rel="manifest" href="/manifest.json" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* — VARIABLES & RESET — */
-    :root {
-      --primary: #5f6368;       
-      --secondary: #80868b;     
-      --dark: #202124;          
-      --dark-alt: #303134;      
-      --light: #e8eaed;         
-      --accent: #8ab4f8;        
-      --accent-hover: #aecbfa;  
-      --radius: 8px;
-      --transition: all 0.2s ease;
-      --shadow: 0 1px 2px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.1);
-      --shadow-hover: 0 1px 3px rgba(0,0,0,0.12), 0 1px 8px rgba(0,0,0,0.12);
-      font-size: clamp(14px, 1.2vw, 16px);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif;
-      background: var(--dark);
-      color: var(--light);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-      min-height: 100vh;
-      line-height: 1.5;
-      background-image: 
-        radial-gradient(circle at 10% 20%, rgba(66, 66, 66, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(66, 66, 66, 0.05) 0%, transparent 40%);
-    }
-
-    /* — STRUCTURE — */
-    .container {
-      width: 100%;
-      max-width: 900px;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    /* — HEADER — */
-    header {
-      text-align: center;
-      margin: 1.5rem 0;
-      padding: 0 1rem;
-    }
-
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-
-    .icon {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--secondary);
-      box-shadow: var(--shadow);
-    }
-
-    .title {
-      font-size: clamp(1.8rem, 5vw, 2.5rem);
-      color: var(--light);
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.5px;
-    }
-
-    .subtitle {
-      color: var(--secondary);
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-      font-weight: 400;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* — NAVIGATION GRID — */
-    nav {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    nav a {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem 0.5rem;
-      border-radius: var(--radius);
-      background: var(--dark-alt);
-      color: var(--light);
-      text-decoration: none;
-      font-weight: 500;
-      transition: var(--transition);
-      border: 1px solid #3c4043;
-      text-align: center;
-      font-size: 0.9rem;
-      min-height: 80px;
-      box-shadow: var(--shadow);
-    }
-
-    nav a:hover {
-      background: #3c4043;
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    nav a i {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--accent);
-    }
-
-    /* — CONTENT CARDS — */
-    .card {
-      background: var(--dark-alt);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      border: 1px solid #3c4043;
-      box-shadow: var(--shadow);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .card-header i {
-      font-size: 1.25rem;
-      color: var(--accent);
-    }
-
-    .card-title {
-      font-size: 1.25rem;
-      color: var(--light);
-      font-weight: 500;
-    }
-
-    .card-content {
-      color: var(--secondary);
-      line-height: 1.6;
-    }
-
-    /* — BUTTONS — */
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.8rem 1.75rem;
-      background: var(--accent);
-      color: var(--dark);
-      border: none;
-      border-radius: var(--radius);
-      font-weight: 500;
-      text-decoration: none;
-      transition: var(--transition);
-      box-shadow: var(--shadow);
-      cursor: pointer;
-      font-size: 0.95rem;
-    }
-
-    .cta-button:hover {
-      background: var(--accent-hover);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    /* — IFRAMES — */
-    .media {
-      width: 100%;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    iframe {
-      width: 100%;
-      border: none;
-      display: block;
-    }
-
-    /* — FEATURES — */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-
-    .feature {
-      background: var(--dark-alt);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      border: 1px solid #3c4043;
-      text-align: center;
-      transition: var(--transition);
-      box-shadow: var(--shadow);
-    }
-
-    .feature:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--accent);
-    }
-
-    .feature i {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .feature h3 {
-      color: var(--light);
-      margin-bottom: 0.75rem;
-      font-size: 1.1rem;
-    }
-
-    .feature p {
-      color: var(--secondary);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    /* — FOOTER — */
-    footer {
-      margin-top: 2rem;
-      padding: 1.5rem 0;
-      font-size: 0.9rem;
-      color: var(--secondary);
-      text-align: center;
-      border-top: 1px solid #3c4043;
-      width: 100%;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: var(--secondary);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .footer-links a:hover {
-      color: var(--accent);
-    }
-
-    /* — RESPONSIVE ADJUSTMENTS — */
-    @media (max-width: 768px) {
-      nav {
-        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-      }
-      
-      .features {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .card {
-        padding: 1.25rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreedomGDPS!!11 Credits</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9138741540234649" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary: #6A5ACD;       /* Slate blue - striking but soft */
+    --secondary: #48D1CC;     /* Medium turquoise - vibrant contrast */
+    --accent: #9370DB;        /* Medium purple - elegant pop */
+    --dark: #0F0F1A;          /* Deep space black with blue undertone */
+    --light: #E6E6FA;         /* Lavender - soft light text */
+    --card-bg: #1E1E2E;       /* Dark space gray with purple tint */
+}
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark) url('https://www.transparenttextures.com/patterns/stardust.png');
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            animation: bgMove 30s linear infinite;
+        }
+        
+        @keyframes bgMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Comic Neue', cursive;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo i {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png') center/cover;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        .icon {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .icon:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: white;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero h2::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 3px;
+        }
+        
+        .hero p {
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: white;
+        }
+        
+        /* Credits Section */
+        .credits-container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .credit-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #4fc3f7;
+        }
+        
+        .credit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .credit-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .credit-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        
+        .credit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .credit-card p {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            color: #DDD;
+        }
+        
+        .role {
+            display: inline-block;
+            padding: 3px 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .view-btn {
+            background-color: var(--accent);
+            color: var(--dark);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(255,209,102,0.3);
+        }
+        
+        .view-btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(255,209,102,0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            padding: 25px 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #4fc3f7;
+        }
+        
+        footer p {
+            font-size: 0.9rem;
+            color: #BBB;
+        }
+        
+        footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: var(--primary);
+        }
+        
+        /* Floating Elements */
+        .floating {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.7;
+            z-index: 1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .floating:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .floating:nth-child(2) {
+            top: 30%;
+            right: 8%;
+            animation-delay: 1s;
+        }
+        
+        .floating:nth-child(3) {
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 2s;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 15px;
+                clip-path: circle(0px at 90% -10%);
+                transition: all 0.5s ease-out;
+                pointer-events: none;
+            }
+            
+            .nav-links.active {
+                clip-path: circle(1000px at 90% -10%);
+                pointer-events: all;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 0.95rem;
+            }
+            
+            .credit-card {
+                padding: 20px;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .credits-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .credit-card {
+                margin-bottom: 0;
+            }
+        }
+        
+        /* Special Effects */
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+        
+        /* Cute Elements */
+        .heart {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 0 5px;
+            animation: pulse 1.5s ease infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
     <header>
-      <div class="logo-container">
-        <img src="https://fless.ps.fhgdps.com/dashboard/icon.png" class="icon" alt="FreedomGDPS Icon" width="100" height="100" style="margin-bottom: 5px;">
-      </div>
-      <h1 class="title">FreedomGDPS!!11</h1>
-      <p class="subtitle">The most freedom Geometry Dash private server from Indonesia. Freedom means being free to do ;3</p>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-gamepad"></i>
+                <span>FreedomGDPS!!11</span>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="https://fless.netlify.app"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href='/tools'><i class="fas fa-tools"></i> Tools</a></li>
+                <li><a href='/rate'><i class="fas fa-star"></i> Rate System</a></li>
+                <li><a href='/download'><i class="fas fa-download"></i> Download</a></li>
+            </ul>
+        </nav>
     </header>
-
-    <nav>
-      <a href="https://fless.ps.fhgdps.com">
-        <i class="fas fa-home"></i> Main Page
-      </a>
-      <a href="/download.html">
-        <i class="fas fa-download"></i> Download
-      </a>
-      <a href="/tools.html">
-        <i class="fas fa-tools"></i> Tools
-      </a>
-      <a href="/rate.html">
-        <i class="fas fa-star"></i> Rating System
-      </a>
-      <a href="https://frgd.ps.fhgdps.com/gauntlet/">
-        <i class="fas fa-trophy"></i> Gauntlet
-      </a>
-      <a href="/demonlist">
-        <i class="fas fa-skull"></i> Demonlist
-      </a>
-      <a href="/social.html">
-        <i class="fas fa-users"></i> Social
-      </a>
-      <a href="https://frgd.ps.fhgdps.com/">
-        <i class="fas fa-chart-bar"></i> Statistics
-      </a>
-      <a href="https://flessan.pages.dev/donate"><i class="fa-solid fa-circle-dollar-to-slot"></i> Donate</a>
-      <a href="/credit.html">
-        <i class="fas fa-hands-helping"></i> Credits
-      </a>
-      <a href="https://flessan.github.io">
-        <i class="fa-solid fa-code"></i> Project
-      </a>
-      <a href="/feedback/terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
-    </nav>
     
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-comments"></i>
-        <h2 class="card-title">Live Chatbox</h2>
-      </div>
-      <div class="card-content">
-        <div class="media">
-          <iframe src="https://www3.cbox.ws/box/?boxid=3547879&boxtag=J6dGVW" width="100%" height="269" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>	
+    <section class="hero">
+        <!-- Floating decorative elements -->
+        <div class="floating" style="font-size: 2rem;">✨</div>
+        <div class="floating" style="font-size: 1.5rem;">💝</div>
+        <div class="floating" style="font-size: 2rem;">⭐</div>
+        
+        <div style="display: flex; justify-content: center;">
+    <img src="https://fless.ps.fhgdps.com/dashboard/icon.png" class="icon" alt="FreedomGDPS Icon" width="100" height="100" style="margin-bottom: 5px;">
+</div>
+        <h2>Our Awesome Team</h2>
+        <p>A very special thanks to these amazing people who contribute their skills and services to make FreedomGDPS!!11 awesome!</p>
+    </section>
+
+    <div class="credits-container">
+        <!-- Credit Card 1 -->
+        <div class="credit-card">
+            <img src="https://www.rickgdps.xyz/files/mathieuar.png" class="credit-img" alt="MathieuAR">
+            <span class="role">Server Provider</span>
+            <h3>MathieuAR</h3>
+            <p>The wonderful person who keeps our server running for free. Without them, our GDPS wouldn't be online!</p>
+            <a href="https://panel.fhgdps.com/">
+                <button class="view-btn">
+                    <i class="fas fa-external-link-alt"></i> View
+                </button>
+            </a>
         </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-music"></i>
-        <h2 class="card-title">Featured Track</h2>
-      </div>
-      <div class="card-content">
-        <div class="media">
-          <iframe height="166" scrolling="no" frameborder="no" allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2101307064&color=%238AB4F8&auto_play=true">
-          </iframe>
+        
+        <!-- Credit Card 2 -->
+        <div class="credit-card">
+            <img src="https://www.rickgdps.xyz/files/megasaint.png" class="credit-img" alt="MegaSa1nt">
+            <span class="role">GDPS Core</span>
+            <h3>MegaSa1nt</h3>
+            <p>The genius behind our awesome GDPS Core and dashboard that makes everything work smoothly.</p>
+            <a href="https://github.com/MegaSa1nt/GMDprivateServer">
+                <button class="view-btn">
+                    <i class="fab fa-github"></i> View
+                </button>
+            </a>
         </div>
-      </div>
-    </div>
 
-    <div class="cta" style="text-align: center;">
-      <a href="https://discord.gg/YyeZ2Sxjgf" class="cta-button">
-        <i class="fab fa-discord"></i> Join Our Discord Community
-      </a>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <i class="fas fa-comments"></i>
-        <h2 class="card-title">Community Hub</h2>
-      </div>
-      <div class="card-content">
-        <div class="media">
-          <iframe height="450" loading="lazy"
-            src="https://discord.com/widget?id=876754832113958912&theme=dark">
-          </iframe>
+      <div class="credit-card">
+            <img src="https://yt3.googleusercontent.com/IYNJahPHPSisIkKP2jCxDyEaFnDEW1UceKrtvfD6Tu4QRkkP1tBKZgpe3okoBiZy7AcqxJNzjw=s160-c-k-c0x00ffffff-no-rj" class="credit-img" alt="Zeroxy">
+            <span class="role">Co-Owner</span>
+            <h3>ZeroxyGD</h3>
+            <p>good person who wants to teach/help the owner :3</p>
+            <a href="https://www.youtube.com/@ZeroxyGMD">
+                <button class="view-btn">
+                    <i class="fas fa-external-link-alt"></i> View
+                </button>
+            </a>
         </div>
-      </div>
+
+        <div class="credit-card">
+            <img src="https://yt3.ggpht.com/da11dYvCV5KMVBDd2lCbTwSJyLknalGTkoddklA_i-hdIXV6WTaNxuTHCxTeBtaHKiarRkcERA=s176-c-k-c0x00ffffff-no-rj-mo" class="credit-img" alt="DANZGAME">
+            <span class="role">Admin</span>
+            <h3>DANZGAME</h3>
+            <p>good person who wants to teach/help the owner :3</p>
+            <a href="https://youtube.com/@danzgame2.2?si=c3Atw4HMFyJDMoZ1">
+                <button class="view-btn">
+                    <i class="fas fa-external-link-alt"></i> View
+                </button>
+            </a>
+        </div>
+        
+        <!-- Credit Card 3 -->
+        <div class="credit-card">
+            <img src="https://yt3.googleusercontent.com/sXs5CCq2-8oFHT0cA-C_THTKvJDA05JqmQSS4vDjnBTrHGQxG1dTth8wJs7hObXs3OQN1V-_=s160-c-k-c0x00ffffff-no-rj" class="credit-img" alt="Migmatos">
+            <span class="role">ObeyGDBot Owner</span>
+            <h3>Migmatos</h3>
+            <p>Our music hero who provides all those amazing custom songs and reuploads that aren't from NG!</p>
+            <a href="https://discord.com/invite/KU9XkXVftC">
+                <button class="view-btn">
+                    <i class="fab fa-discord"></i> View
+                </button>
+            </a>
+        </div>
+        
+        <!-- Credit Card 4 -->
+        <div class="credit-card">
+            <img src="https://upload.wikimedia.org/wikipedia/id/3/35/Geometry_Dash_Logo.PNG" class="credit-img" alt="RobTop">
+            <span class="role">Game Creator</span>
+            <h3>RobTop</h3>
+            <p>The absolute legend who created Geometry Dash in the first place. Thank you for this amazing game!</p>
+            <a href="https://discord.com/invite/geometrydash">
+                <button class="view-btn">
+                    <i class="fab fa-discord"></i> View
+                </button>
+            </a>
+        </div>
+
+        <div class="credit-card">
+            <img src="https://yt3.ggpht.com/lOHz7YK99VE8BiS11Q6EEv2FC5IT5cZJ99WF9CnWBBomfCv65suX_amsSZxZl16-DMhBpzoVdQ=s176-c-k-c0x00ffffff-no-rj-mo" class="credit-img" alt="GiffariRMX">
+            <span class="role">Admin</span>
+            <h3>GiffariRMX</h3>
+            <p>great person who wants to teach/help the owner :3</p>
+            <a href="https://www.youtube.com/@GifFariRMX">
+                <button class="view-btn">
+                    <i class="fas fa-external-link-alt"></i> View
+                </button>
+            </a>
+        </div>
+        
+        <!-- Credit Card 5 -->
+        <div class="credit-card">
+            <img src="https://www.rickgdps.xyz/files/blazen.png" class="credit-img" alt="Blazen">
+            <span class="role">GDPS Hub</span>
+            <h3>Blazen</h3>
+            <p>Helping us get noticed by promoting our GDPS Core and bringing more players to our community!</p>
+            <a href="https://gdpshub.com/">
+                <button class="view-btn">
+                    <i class="fas fa-external-link-alt"></i> View
+                </button>
+            </a>
+        </div>
     </div>
 
-    <div class="features">
-      <div class="feature">
-        <i class="fas fa-rocket"></i>
-        <h3>Enhanced Performance</h3>
-        <p>Our server delivers smooth gameplay with optimized performance even on lower-end devices.</p>
-      </div>
-      <div class="feature">
-        <i class="fas fa-paint-brush"></i>
-        <h3>Creative Freedom</h3>
-        <p>Unlock new creative possibilities with our expanded editor tools and features.</p>
-      </div>
-      <div class="feature">
-        <i class="fas fa-globe"></i>
-        <h3>Active Community</h3>
-        <p>Join thousands of players in our vibrant, supportive Indonesian gaming community.</p>
-      </div>
-    </div>
-  </div>
+    <footer>
+        <p>Made with <span class="heart">muwani</span> | All Rights Reserved | <a href="#"><span>FrGDPS 2025</span></a></p>
+    </footer>
 
-  <footer>
-    <p>Website by Fless • FreedomGDPS!!11 &copy; <span id="year"></span></p>
-    <div class="footer-links">
-      <a href="/feedback/terms.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
-      <a href="/feedback/faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
-      <a href="/feedback/contact.html"><i class="fas fa-envelope"></i> Contact</a>
-      <a href="https://stats.uptimerobot.com/wpCeS1LMcH"><i class="fas fa-server"></i> Server Status</a>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Simple animation for elements when they come into view
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Add sparkle effects randomly
+        function addSparkles() {
+            const colors = ['#FF6B9E', '#6BD5FF', '#FFD166', '#FFFFFF'];
+            const hero = document.querySelector('.hero');
+            
+            for (let i = 0; i < 15; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.top = `${Math.random() * 100}%`;
+                sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                sparkle.style.animationDelay = `${Math.random() * 2}s`;
+                hero.appendChild(sparkle);
+            }
         }
-      });
-    });
-    
-    document.querySelectorAll('.feature, .card, .cta-button').forEach(el => {
-      el.style.opacity = 0;
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      observer.observe(el);
-    });
-  </script>
+        
+        // Run after page loads
+        window.addEventListener('load', addSparkles);
+    </script>
 </body>
 </html>
