@@ -3,249 +3,170 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FreedomGDPS!!11 - Rate Standards</title>
-  <link rel="icon" href="https://i.imgur.com/XgxyFUN.png" type="image/png" />
-  <style>
-    :root {
-      --bg-color: #0a0a1f;
-      --text-color: #e0e0e0;
-      --card-bg: #1a1a3d;
-      --accent: #8bc6ec;
-    }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      overflow-x: hidden;
-    }
-    header, footer {
-      text-align: center;
-      padding: 1.2rem;
-      background: #111533;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-    }
-    h1 {
-      font-size: 2rem;
-    }
-    .subtitle {
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-    .back-btn {
-      display: inline-block;
-      margin: 1rem auto;
-      text-align: center;
-      background: #333a6e;
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      text-decoration: none;
-    }
-    .rate-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
-    }
-    .rate-box {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 1rem;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      position: relative;
-    }
-    .rate-box h2 {
-      margin-top: 0;
-      font-size: 1.2rem;
-      color: var(--accent);
-    }
-    .progress-group {
-      margin: 0.8rem 0;
-    }
-    .progress-group label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-    }
-    .progress-bar {
-      width: 100%;
-      height: 8px;
-      background: #333;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .progress-bar span {
-      display: block;
-      height: 100%;
-      background: linear-gradient(to right, #8bc6ec, #9599e2);
-      width: 0;
-      transition: width 1s ease-in-out;
-    }
-    .rate-box p {
-      font-size: 0.88rem;
-      color: #ccc;
-    }
-    #predictor {
-      background: #1a1a3d;
-      padding: 1rem;
-      margin: 2rem auto;
-      max-width: 400px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
-    #predictor input {
-      width: calc(100% - 20px);
-      margin: 0.3rem 0;
-      padding: 0.4rem;
-      border: none;
-      border-radius: 6px;
-    }
-    #predictor button {
-      width: 100%;
-      margin-top: 0.5rem;
-      padding: 0.6rem;
-      border: none;
-      border-radius: 6px;
-      background: #333a6e;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    #predictionResult {
-      text-align: center;
-      margin-top: 1rem;
-      color: var(--accent);
-      font-weight: bold;
-    }
-    #stars {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
-      background-size: cover;
-    }
-    footer {
-      font-size: 0.8rem;
-      color: #aaa;
-    }
-  </style>
+  <title>GDIPS - Standar Rate</title>
+  <link rel="icon" href="https://fless.ps.fhgdps.com/dashboard/icon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="aset/batik.css">
 </head>
 <body>
-  <div id="stars"></div>
-  <header>
-    <h1>FreedomGDPS!!11 Rate Standards</h1>
-    <p class="subtitle">Panduan rate level dari Star hingga Mythic</p>
-  </header>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo-container">
+        <div class="logo">
+          <img src="https://fless.ps.fhgdps.com/dashboard/icon.png" alt="GDIPS Logo">
+        </div>
+      </div>
+      
+      <h1 class="title">Standar Rate</h1>
+      <p class="subtitle">Panduan rate level dari Star hingga Mythic</p>
+    </header>
 
-  <main>
-    <div style="text-align:center;">
-      <a href="/index.html" class="back-btn">← Kembali ke Menu</a>
-    </div>
+    <!-- Main Content -->
+    <main>
+      <div style="text-align:center; margin-bottom: 30px;">
+        <a href="/index.html" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Kembali ke Menu
+        </a>
+      </div>
 
-    <form id="predictor">
-      <input type="number" id="layout" placeholder="Layout (%)" max="100" min="0" required>
-      <input type="number" id="deco" placeholder="Deco (%)" max="100" min="0" required>
-      <input type="number" id="gameplay" placeholder="Gameplay (%)" max="100" min="0" required>
-      <button type="submit">Prediksi Rate</button>
-      <div id="predictionResult"></div>
-    </form>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <h2 class="card-title">Kalkulator Prediksi Rate</h2>
+        </div>
+        
+        <form id="predictor" class="predictor-form">
+          <div class="input-group">
+            <div class="input-wrapper">
+              <i class="fas fa-th input-icon"></i>
+              <input type="number" id="layout" placeholder="Layout (%)" max="100" min="0" required class="input-field">
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <div class="input-wrapper">
+              <i class="fas fa-palette input-icon"></i>
+              <input type="number" id="deco" placeholder="Deco (%)" max="100" min="0" required class="input-field">
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <div class="input-wrapper">
+              <i class="fas fa-gamepad input-icon"></i>
+              <input type="number" id="gameplay" placeholder="Gameplay (%)" max="100" min="0" required class="input-field">
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-magic"></i> Prediksi Rate
+          </button>
+          
+          <div id="predictionResult" class="prediction-result"></div>
+        </form>
+      </div>
 
-    <div class="rate-container">
-      <!-- Star Rate -->  
-      <div class="rate-box">  
-        <h2>Star Rate (Normal)</h2>  
-        <div class="progress-group">  
-          <label><span>Layout</span><span>30%</span></label>  
-          <div class="progress-bar"><span style="width: 30%"></span></div>  
+      <div class="rate-container">
+        <!-- Star Rate -->  
+        <div class="rate-box">  
+          <h2>Star Rate (Normal)</h2>  
+          <div class="progress-group">  
+            <label><span>Layout</span><span>30%</span></label>  
+            <div class="progress-bar"><span style="width: 30%"></span></div>  
+          </div>  
+          <div class="progress-group">  
+            <label><span>Deco</span><span>10%</span></label>  
+            <div class="progress-bar"><span style="width: 10%"></span></div>  
+          </div>  
+          <div class="progress-group">  
+            <label><span>Gameplay</span><span>35%</span></label>  
+            <div class="progress-bar"><span style="width: 35%"></span></div>  
+          </div>  
+          <p>Level harus bisa dimainkan dari awal sampai akhir. Fitur 2.2 tidak wajib, tapi kalau dipakai harus bermanfaat. Cocok untuk level simple tapi fun!</p>  
         </div>  
-        <div class="progress-group">  
-          <label><span>Deco</span><span>10%</span></label>  
-          <div class="progress-bar"><span style="width: 10%"></span></div>  
+
+        <!-- Featured -->  
+        <div class="rate-box">  
+          <h2>Featured</h2>  
+          <div class="progress-group">  
+            <label><span>Layout</span><span>40%</span></label>  
+            <div class="progress-bar"><span style="width: 40%"></span></div>  
+          </div>  
+          <div class="progress-group">  
+            <label><span>Deco</span><span>40%</span></label>  
+            <div class="progress-bar"><span style="width: 40%"></span></div>  
+          </div>  
+          <div class="progress-group">  
+            <label><span>Gameplay</span><span>40%</span></label>  
+            <div class="progress-bar"><span style="width: 40%"></span></div>  
+          </div>  
+          <p>Gameplay harus fun dan seimbang. Gunakan fitur 2.2 secara efektif. Dekorasi harus terkonsep dan tidak asal.</p>  
         </div>  
-        <div class="progress-group">  
-          <label><span>Gameplay</span><span>35%</span></label>  
-          <div class="progress-bar"><span style="width: 35%"></span></div>  
+
+        <!-- Epic -->  
+        <div class="rate-box">  
+          <h2>Epic</h2>  
+          <div class="progress-group">  
+            <label><span>Layout</span><span>45%</span></label>  
+            <div class="progress-bar"><span style="width: 45%"></span></div>  
+          </div>  
+          <div class="progress-group">  
+            <label><span>Deco</span><span>55%</span></label>  
+            <div class="progress-bar"><span style="width: 55%"></span></div>  
+          </div>  
+          <div class="progress-group">  
+            <label><span>Gameplay</span><span>65%</span></label>  
+            <div class="progress-bar"><span style="width: 65%"></span></div>  
+          </div>  
+          <p>Gameplay seru, jelas, dan minim chokepoint. Fitur 2.2 harus kelihatan jelas. Warna & dekorasi rapi dan enak dilihat.</p>  
         </div>  
-        <p>Level harus bisa dimainkan dari awal sampai akhir. Fitur 2.2 tidak wajib, tapi kalau dipakai harus bermanfaat. Cocok untuk level simple tapi fun!</p>  
-      </div>  <!-- Featured -->  
-  <div class="rate-box">  
-    <h2>Featured</h2>  
-    <div class="progress-group">  
-      <label><span>Layout</span><span>40%</span></label>  
-      <div class="progress-bar"><span style="width: 40%"></span></div>  
-    </div>  
-    <div class="progress-group">  
-      <label><span>Deco</span><span>40%</span></label>  
-      <div class="progress-bar"><span style="width: 40%"></span></div>  
-    </div>  
-    <div class="progress-group">  
-      <label><span>Gameplay</span><span>40%</span></label>  
-      <div class="progress-bar"><span style="width: 40%"></span></div>  
-    </div>  
-    <p>Gameplay harus fun dan seimbang. Gunakan fitur 2.2 secara efektif. Dekorasi harus terkonsep dan tidak asal.</p>  
-  </div>  
 
-  <!-- Epic -->  
-  <div class="rate-box">  
-    <h2>Epic</h2>  
-    <div class="progress-group">  
-      <label><span>Layout</span><span>45%</span></label>  
-      <div class="progress-bar"><span style="width: 45%"></span></div>  
-    </div>  
-    <div class="progress-group">  
-      <label><span>Deco</span><span>55%</span></label>  
-      <div class="progress-bar"><span style="width: 55%"></span></div>  
-    </div>  
-    <div class="progress-group">  
-      <label><span>Gameplay</span><span>65%</span></label>  
-      <div class="progress-bar"><span style="width: 65%"></span></div>  
-    </div>  
-    <p>Gameplay seru, jelas, dan minim chokepoint. Fitur 2.2 harus kelihatan jelas. Warna & dekorasi rapi dan enak dilihat.</p>  
-  </div>  
+        <!-- Legendary -->  
+        <div class="rate-box">  
+          <h2>Legendary</h2>  
+          <div class="progress-group">  
+            <label><span>Layout</span><span>60%</span></label>  
+            <div class="progress-bar"><span style="width: 60%"></span></div>  
+          </div>  
+          <div class="progress-group">  
+            <label><span>Deco</span><span>75%</span></label>  
+            <div class="progress-bar"><span style="width: 75%"></span></div>  
+          </div>  
+          <div class="progress-group">  
+            <label><span>Gameplay</span><span>85%</span></label>  
+            <div class="progress-bar"><span style="width: 85%"></span></div>  
+          </div>  
+          <p>Level ini harus top-tier. Efek keren, playable di semua device. Gameplay mantap, unik, dan menarik.</p>  
+        </div>  
 
-  <!-- Legendary -->  
-  <div class="rate-box">  
-    <h2>Legendary</h2>  
-    <div class="progress-group">  
-      <label><span>Layout</span><span>60%</span></label>  
-      <div class="progress-bar"><span style="width: 60%"></span></div>  
-    </div>  
-    <div class="progress-group">  
-      <label><span>Deco</span><span>75%</span></label>  
-      <div class="progress-bar"><span style="width: 75%"></span></div>  
-    </div>  
-    <div class="progress-group">  
-      <label><span>Gameplay</span><span>85%</span></label>  
-      <div class="progress-bar"><span style="width: 85%"></span></div>  
-    </div>  
-    <p>Level ini harus top-tier. Efek keren, playable di semua device. Gameplay mantap, unik, dan menarik.</p>  
-  </div>  
+        <!-- Mythic -->  
+        <div class="rate-box">  
+          <h2>Mythic</h2>  
+          <div class="progress-group">  
+            <label><span>Layout</span><span>89%</span></label>  
+            <div class="progress-bar"><span style="width: 89%"></span></div>  
+          </div>  
+          <div class="progress-group">  
+            <label><span>Deco</span><span>89%</span></label>  
+            <div class="progress-bar"><span style="width: 89%"></span></div>  
+          </div>  
+          <div class="progress-group">  
+            <label><span>Gameplay</span><span>89%</span></label>  
+            <div class="progress-bar"><span style="width: 89%"></span></div>  
+          </div>  
+          <p>Nyaris sempurna. Kreatif, fun, dekorasi beda dari yang lain. Voting khusus akan diadakan untuk level Mythic.</p>  
+        </div>
+      </div>
+    </main>
 
-  <!-- Mythic -->  
-  <div class="rate-box">  
-    <h2>Mythic</h2>  
-    <div class="progress-group">  
-      <label><span>Layout</span><span>89%</span></label>  
-      <div class="progress-bar"><span style="width: 89%"></span></div>  
-    </div>  
-    <div class="progress-group">  
-      <label><span>Deco</span><span>89%</span></label>  
-      <div class="progress-bar"><span style="width: 89%"></span></div>  
-    </div>  
-    <div class="progress-group">  
-      <label><span>Gameplay</span><span>89%</span></label>  
-      <div class="progress-bar"><span style="width: 89%"></span></div>  
-    </div>  
-    <p>Nyaris sempurna. Kreatif, fun, dekorasi beda dari yang lain. Voting khusus akan diadakan untuk level Mythic.</p>  
+    <!-- Footer -->
+    <footer>
+      <p>Rate System oleh <span>Fless</span> | GDIPS &copy; <span id="year"></span></p>
+    </footer>
   </div>
-    </div>
-  </main>
-
-  <footer>
-    Rate System by <span>Fless</span> | FreedomGDPS!!11 &copy; <span id="year"></span>
-  </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -270,7 +191,17 @@
       else if (avg >= 60) result = "Epic";
       else if (avg >= 40) result = "Featured";
       else result = "Star";
-      document.getElementById("predictionResult").textContent = `Prediksi Rate: ${result}`;
+      
+      const resultElement = document.getElementById("predictionResult");
+      resultElement.textContent = `Prediksi Rate: ${result}`;
+      
+      // Add animation class
+      resultElement.classList.add("show");
+      
+      // Remove animation class after animation completes
+      setTimeout(() => {
+        resultElement.classList.remove("show");
+      }, 3000);
     });
   </script>
 </body>
