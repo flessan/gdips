@@ -2618,7 +2618,7 @@ transition-duration: 0.01ms !important;
                                                   <i class="fas fa-star"></i>
                                               </div>
                       
-                      <div class="feedback-message">FreedomGDPS!!11 Is NO Longer EXIST!!11</div>
+                      <div class="feedback-message">GDIPS Is NO Longer EXIST!!11</div>
                       
                       <div class="feedback-actions">
                         <form method="post" style="display: inline;">

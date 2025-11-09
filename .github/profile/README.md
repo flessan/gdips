@@ -2,7 +2,7 @@
 
 
 
-**FreedomGDPS!!11** is a GDPS (Geometry Dash Private Server) hosted on **GDPSFH**. The GDPS originally started on November 28th, 2024.
+**GDIPS** is a GDPS (Geometry Dash Private Server) hosted on **GDPSFH**. The GDPS originally started on November 28th, 2024.
 ***
 ## Downloading
 You can download the GDPS in [here](https://fless.ps.fhgdps.com).<br>Platforms that are supported are: **Android** and **Windows** | **iOS** not added.
