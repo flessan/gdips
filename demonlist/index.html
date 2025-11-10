@@ -4,625 +4,416 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FrGDPS Demon List</title>
+  <meta name="description" content="The hardest levels in FrGDPS, ranked by the community">
+  <meta name="keywords" content="FrGDPS, Geometry Dash, Demon List, Levels">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #ff4b6b;
-      --primary-dark: #c51f3b;
-      --accent: #ffe47a;
-      --bg: #161922;
-      --glass: rgba(27,29,36,0.73);
-      --glass-light: rgba(36,39,53,0.94);
-      --surface: #222632;
-      --surface-light: #282d3b;
-      --text: #f7f7fa;
-      --text-muted: #a2a2b3;
-      --radius: 18px;
-      --shadow: 0 8px 40px 0 #0b0b0c2e;
-      --grid-gap: 2.2rem;
-      --card-max: 370px;
-    }
-    html, body {
-      padding: 0; margin: 0;
-      font-family: 'Rubik', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Header */
-    header {
-      backdrop-filter: blur(8px);
-      background: var(--glass-light);
-      box-shadow: 0 2px 12px #0002;
-      position: sticky; top: 0; left: 0; right: 0;
-      z-index: 20;
-      transition: background 0.3s;
-    }
-    .header-bar {
-      max-width: 1440px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 2vw 1.2rem 2vw;
-      gap: 1.5rem;
-    }
-    .logo-wrap {
-      display: flex; align-items: center; gap: 0.7rem;
-      font-weight: 700; font-size: 1.55rem;
-      letter-spacing: -1px;
-      color: var(--primary);
-      text-shadow: 0 1px 8px #ff4b6b20;
-      cursor: pointer;
-      user-select: none;
-    }
-    .logo-wrap img {
-      width: 44px; height: 44px; border-radius: 12px; background: #fff1;
-      box-shadow: 0 2px 14px #0002;
-      object-fit: cover;
-    }
-
-    /* Sidebar Navigation */
-    .sidebar {
-      position: fixed; left: 0; top: 0; bottom: 0;
-      width: 240px;
-      background: var(--glass);
-      box-shadow: 2px 0 24px #0001;
-      padding: 2.2rem 0.8rem 2rem 1.4rem;
-      display: flex; flex-direction: column;
-      gap: 2.2rem;
-      z-index: 50;
-      transform: translateX(-100%);
-      transition: transform 0.35s cubic-bezier(.77,.2,.05,1.0);
-    }
-    .sidebar.active { transform: translateX(0);}
-    .sidebar nav ul {
-      list-style: none; padding: 0; margin: 0;
-      display: flex; flex-direction: column; gap: 1.1rem;
-    }
-    .sidebar nav a {
-      text-decoration: none; color: var(--text-muted);
-      font-weight: 500; font-size: 1.08rem;
-      display: flex; align-items: center; gap: 0.9rem;
-      padding: 0.7rem 1rem 0.7rem 0.5rem;
-      border-radius: 12px;
-      transition: background 0.18s, color 0.18s;
-    }
-    .sidebar nav a.active, .sidebar nav a:hover {
-      background: var(--primary);
-      color: #fff;
-    }
-    .sidebar nav a i { font-size: 1.1rem; }
-
-    .sidebar .close-btn {
-      background: none; border: none;
-      color: var(--text); font-size: 2rem;
-      position: absolute; top: 1.1rem; right: 1.2rem;
-      cursor: pointer;
-      opacity: 0.8;
-      transition: opacity 0.18s;
-    }
-    .sidebar .close-btn:hover { opacity: 1; color: var(--primary); }
-
-    /* Hamburger */
-    .menu-btn {
-      width: 48px; height: 48px;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--surface-light);
-      border-radius: 50%;
-      border: none;
-      color: var(--primary);
-      font-size: 1.7rem;
-      box-shadow: 0 2px 10px #0002;
-      cursor: pointer;
-      transition: background .23s, color .23s;
-      z-index: 100;
-    }
-    .menu-btn:hover { background: var(--primary); color: #fff; }
-
-    /* Main */
-    main {
-      flex: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 2.4rem 2vw 2rem 2vw;
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
-    }
-    .page-header {
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
-    .page-header h2 {
-      font-size: 2.3rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-      letter-spacing: -1px;
-      text-shadow: 0 2px 12px #0002;
-    }
-    .page-header p {
-      color: var(--text-muted); font-size: 1.08rem;
-      letter-spacing: 0.1px;
-    }
-
-    /* Stats */
-    .stats-row {
-      width: 100%;
-      display: flex; gap: 1.5rem; align-items: center; justify-content: center;
-      margin-bottom: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .stat-card {
-      background: var(--glass);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 1.1rem 2.2rem;
-      min-width: 145px;
-      display: flex; flex-direction: column; align-items: center;
-      border: 1.5px solid #fff1;
-    }
-    .stat-card h3 {
-      font-size: 0.95rem; font-weight: 500; color: var(--text-muted);
-      margin-bottom: 0.16rem;
-    }
-    .stat-card p {
-      font-size: 2.1rem; font-weight: 700; color: var(--primary); margin: 0;
-    }
-
-    /* Search Bar */
-    .search-bar-wrap {
-      max-width: 430px; margin: 0 auto;
-      position: relative;
-    }
-    .search-bar-wrap input {
-      width: 100%; padding: 1.1rem 1.1rem 1.1rem 2.8rem;
-      border-radius: 24px;
-      background: var(--surface);
-      color: var(--text);
-      border: 1.3px solid #fff2;
-      font-size: 1.08rem;
-      box-shadow: var(--shadow);
-      outline: none;
-      transition: border .19s;
-    }
-    .search-bar-wrap input:focus {
-      border: 1.3px solid var(--primary);
-      background: var(--surface-light);
-    }
-    .search-bar-wrap i {
-      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
-      color: var(--text-muted); font-size: 1.15rem;
-    }
-
-    /* Demon List Cards Grid */
-    .demon-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(var(--card-max), 1fr));
-      gap: var(--grid-gap);
-      margin: 0 auto;
-    }
-    .demon-card {
-      background: var(--glass);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: transform 0.22s cubic-bezier(.35,1.63,.75,1.01), box-shadow 0.22s;
-      border: 1.5px solid #fff1;
-      min-width: 0;
-      min-height: 320px;
-      position: relative;
-    }
-    .demon-card:hover {
-      transform: translateY(-7px) scale(1.025);
-      box-shadow: 0 8px 32px #ff4b6b33, var(--shadow);
-      z-index: 2;
-    }
-    .card-rank {
-      position: absolute; top: 1.2rem; left: 1.3rem;
-      background: var(--primary);
-      color: #fff; font-weight: 700;
-      font-size: 1.2rem;
-      border-radius: 50%; width: 38px; height: 38px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 8px #ff4b6b33;
-      letter-spacing: -1px;
-      z-index: 2;
-      border: 2px solid #fff4;
-    }
-    .card-thumb {
-      width: 100%; aspect-ratio: 16/9; max-height: 180px; object-fit: cover;
-      border-bottom: 1.5px solid #fff1;
-      background: #222;
-      cursor: pointer;
-      transition: filter .2s;
-      position: relative;
-    }
-    .card-thumb:hover { filter: brightness(1.07) saturate(1.2);}
-    .no-video-thumb {
-      width: 100%; aspect-ratio: 16/9; max-height: 180px;
-      display: flex; align-items: center; justify-content: center;
-      color: #888; font-size: 1.1rem; font-style: italic;
-      background: #23242d;
-    }
-    .play-btn-overlay {
-      position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
-      color: #fff; font-size: 2.3rem;
-      background: #0008; border-radius: 50%;
-      width: 3.2rem; height: 3.2rem; display: flex; align-items: center; justify-content: center;
-      transition: background 0.18s;
-      pointer-events: none;
-    }
-    .card-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      padding: 1.1rem 1.2rem 1.1rem 1.2rem;
-    }
-    .level-title {
-      font-size: 1.17rem; font-weight: 600; color: #fff;
-      margin-bottom: 0.12rem;
-      overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
-    }
-    .level-info-row {
-      font-size: 0.99rem; color: var(--text-muted);
-      display: flex; gap: 0.8rem; flex-wrap: wrap;
-    }
-    .diff-pill {
-      display: inline-block;
-      padding: 0.18rem 0.95rem;
-      border-radius: 1em;
-      font-size: 0.87rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      background: var(--surface-light);
-      color: var(--primary);
-      margin-right: 0.5em;
-    }
-    .easy { background: #40e09c30; color: #40e09c; }
-    .medium { background: #ffd90038; color: #ffd900; }
-    .hard { background: #ff5e5e35; color: #ff5e5e; }
-    .insane { background: #9c27b042; color: #c574f8; }
-    .extreme { background: #ff5e5e35; color: #C21F1F; }
-    .lvl-id-badge {
-      background: #fff2; color: var(--text-muted);
-      font-size: 0.90rem;
-      padding: 0.14rem 0.85rem;
-      border-radius: 10px;
-      margin-left: 0.7em;
-      font-weight: 500;
-      letter-spacing: 0.2px;
-    }
-    .creator-row {
-      font-size: 0.98rem; margin-top: 0.22rem;
-      color: var(--text-muted);
-      display: flex; gap: 1.1em;
-      flex-wrap: wrap;
-    }
-    .creator-row span {
-      display: flex; align-items: center; gap: 0.38em;
-    }
-    .creator-row i { color: var(--primary); font-size: 1.08em; }
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.92);
-      z-index: 999;
-      align-items: center; justify-content: center;
-      animation: fadeIn .22s;
-    }
-    .modal.active { display: flex; }
-    .modal-content {
-      background: #15161e;
-      border-radius: 20px;
-      box-shadow: 0 6px 32px #000a;
-      padding: 0;
-      position: relative;
-      max-width: 90vw; max-height: 80vh;
-      overflow: hidden;
-      display: flex; flex-direction: column;
-    }
-    .modal-content iframe {
-      width: 70vw; max-width: 800px;
-      height: 45vw; max-height: 450px;
-      border: none;
-      background: #000;
-      border-radius: 20px 20px 0 0;
-    }
-    .modal-close {
-      position: absolute; top: 0.5rem; right: 1.2rem;
-      background: none; border: none; color: #fff;
-      font-size: 2.2rem; cursor: pointer; z-index: 10;
-      opacity: 0.78; transition: opacity .18s;
-    }
-    .modal-close:hover { opacity: 1; color: var(--primary); }
-
-    /* Footer */
-    footer {
-      background: var(--glass-light);
-      color: var(--text-muted);
-      text-align: center;
-      padding: 1.5rem 1rem 1.2rem 1rem;
-      font-size: 1rem;
-      letter-spacing: 0.08px;
-      box-shadow: 0 -2px 12px #0002;
-      margin-top: auto;
-      z-index: 2;
-    }
-    /* Responsive */
-    @media (max-width: 1020px) {
-      .demon-grid { grid-template-columns: 1fr 1fr;}
-    }
-    @media (max-width: 700px) {
-      .demon-grid { grid-template-columns: 1fr;}
-      .header-bar { padding: 1rem 1vw;}
-      .page-header h2 { font-size: 1.44rem;}
-      .stat-card { min-width: 120px; padding: 1rem 1.1rem;}
-      .modal-content iframe { width: 94vw; height: 54vw; }
-    }
-    @media (max-width: 600px) {
-      .header-bar { flex-direction: row; gap: 0.5rem; }
-      .sidebar { width: 85vw; min-width: 0;}
-      main { padding: 1.1rem 0.3rem;}
-      .modal-content { max-width: 99vw; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👹</text></svg>">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 </head>
 <body>
   <header>
     <div class="header-bar">
       <div class="logo-wrap" onclick="window.location='index.html'">
-        <img src="demon.png" alt="FrDL Logo">
+        <img src="https://picsum.photos/seed/frgdps/44/44.jpg" alt="FrDL Logo">
         FrDL
       </div>
-      <button class="menu-btn" id="openSidebar" aria-label="Open Menu"><i class="fas fa-bars"></i></button>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="menu-btn" id="openSidebar" aria-label="Open Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
     </div>
   </header>
+  
+  <nav class="tab-nav">
+    <a href="index.html" class="tab-nav-item active">
+      <i class="fas fa-list"></i> Demon List
+    </a>
+    <a href="pemonlist.html" class="tab-nav-item">
+      <i class="fas fa-star"></i> Pemon List
+    </a>
+    <a href="impossiblelist.html" class="tab-nav-item">
+      <i class="fas fa-skull-crossbones"></i> Impossible List
+    </a>
+    <a href="info.html" class="tab-nav-item">
+      <i class="fas fa-info-circle"></i> About
+    </a>
+  </nav>
+  
   <aside class="sidebar" id="sidebarNav" aria-label="Sidebar navigation">
-    <button class="close-btn" id="closeSidebar" aria-label="Close Menu"><i class="fas fa-times"></i></button>
+    <button class="close-btn" id="closeSidebar" aria-label="Close Menu">
+      <i class="fas fa-times"></i>
+    </button>
+    
+    <div class="user-profile" id="userProfileSection">
+      <div class="user-avatar">
+        <i class="fas fa-user"></i>
+      </div>
+      <div class="user-info">
+        <h3 id="usernameDisplay">Guest User</h3>
+        <p>FrGDPS Player</p>
+        <div class="user-level">Level <span id="userLevel">1</span></div>
+        <div class="user-experience"><span id="userExperience">0</span> XP</div>
+      </div>
+      <div class="user-stats">
+        <div class="user-stat">
+          <span id="completedCount">0</span>
+          <p>Completed</p>
+        </div>
+        <div class="user-stat">
+          <span id="favoriteCount">0</span>
+          <p>Favorites</p>
+        </div>
+      </div>
+    </div>
+    
     <nav>
       <ul>
         <li><a href="index.html" class="active"><i class="fas fa-list"></i> Demon List</a></li>
         <li><a href="https://forms.gle/DNvnJwDPtNNpsfUd8" target="_blank" rel="noopener noreferrer"><i class="fas fa-plus-circle"></i> Submit Level</a></li>
         <li><a href="info.html"><i class="fas fa-info-circle"></i> About</a></li>
-        <li><a href="best.html"><i class="fas fa-trophy"></i> Leaderboard</a></li>
+        <li><a href="#" id="favoritesLink"><i class="fas fa-heart"></i> Favorites</a></li>
+        <li><a href="#" id="recentLink"><i class="fas fa-history"></i> Recently Viewed</a></li>
+        <li><a href="#" id="achievementsLink"><i class="fas fa-trophy"></i> Achievements</a></li>
+        <li><a href="#" id="settingsLink"><i class="fas fa-cog"></i> Settings</a></li>
       </ul>
     </nav>
+    <div class="sidebar-footer">
+      <p>&copy; <span id="year"></span> FrGDPS Demonlist</p>
+      <p>Made with <i class="fas fa-heart" style="color: var(--primary);"></i> by the community</p>
+    </div>
   </aside>
+  
   <main>
     <div class="page-header">
       <h2>FrGDPS Demon List</h2>
-      <p>The hardest levels in GDIPS</p>
+      <p>The hardest levels in FrGDPS, ranked by the community</p>
     </div>
+    
+    <div class="recent-updates">
+      <h3>Recent Updates</h3>
+      <div class="update-item">
+        <div class="update-icon">
+          <i class="fas fa-plus"></i>
+        </div>
+        <div class="update-content">
+          <p>New level added: "Sonic Wave"</p>
+          <span>2 hours ago</span>
+        </div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">
+          <i class="fas fa-trophy"></i>
+        </div>
+        <div class="update-content">
+          <p>New verification: "Acropolis" by Player123</p>
+          <span>5 hours ago</span>
+        </div>
+      </div>
+      <div class="update-item">
+        <div class="update-icon">
+          <i class="fas fa-edit"></i>
+        </div>
+        <div class="update-content">
+          <p>Difficulty updated for "Silent Club"</p>
+          <span>1 day ago</span>
+        </div>
+      </div>
+    </div>
+    
     <div class="stats-row">
       <div class="stat-card">
         <h3>Total Demons</h3>
         <p id="totalDemons">0</p>
+        <i class="fas fa-fire"></i>
       </div>
       <div class="stat-card">
         <h3>Extreme Demons</h3>
         <p id="extremeDemons">0</p>
+        <i class="fas fa-skull"></i>
       </div>
       <div class="stat-card">
         <h3>Last Updated</h3>
         <p id="lastUpdated">-</p>
+        <i class="fas fa-clock"></i>
       </div>
-      <footer>
-    &copy; <span id="year"></span> FrGDPS Demonlist. All rights reserved.
-  </footer>
     </div>
-    <div class="search-bar-wrap">
-      <i class="fas fa-search"></i>
-      <input type="text" id="searchInput" placeholder="Search Keywords...">
+    
+    <div class="controls-section">
+      <div class="search-filter-container">
+        <div class="search-bar-wrap">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Search demons..." autocomplete="off">
+          <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+        
+        <div class="filter-dropdown">
+          <button class="filter-btn" id="difficultyFilter">
+            <i class="fas fa-filter"></i>
+            <span>Difficulty</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="filter-menu" id="difficultyMenu">
+            <div class="filter-option active" data-value="all">All Difficulties</div>
+            <div class="filter-option" data-value="easy">Easy</div>
+            <div class="filter-option" data-value="medium">Medium</div>
+            <div class="filter-option" data-value="hard">Hard</div>
+            <div class="filter-option" data-value="insane">Insane</div>
+            <div class="filter-option" data-value="extreme">Extreme</div>
+          </div>
+        </div>
+        
+        <div class="filter-dropdown">
+          <button class="filter-btn" id="sortFilter">
+            <i class="fas fa-sort"></i>
+            <span>Sort By</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="filter-menu" id="sortMenu">
+            <div class="filter-option active" data-value="rank">Rank</div>
+            <div class="filter-option" data-value="name">Name</div>
+            <div class="filter-option" data-value="difficulty">Difficulty</div>
+            <div class="filter-option" data-value="creator">Creator</div>
+            <div class="filter-option" data-value="rating">Rating</div>
+          </div>
+        </div>
+        
+        <button class="action-btn" id="advancedFilterBtn">
+          <i class="fas fa-sliders-h"></i>
+          Advanced
+        </button>
+      </div>
+      
+      <div class="view-controls">
+        <button class="view-btn active" id="gridView" title="Grid View">
+          <i class="fas fa-th"></i>
+        </button>
+        <button class="view-btn" id="listView" title="List View">
+          <i class="fas fa-list"></i>
+        </button>
+      </div>
+      
+      <div class="action-buttons">
+        <button class="action-btn" id="exportBtn">
+          <i class="fas fa-download"></i> Export
+        </button>
+        <button class="action-btn" id="randomBtn">
+          <i class="fas fa-random"></i> Random
+        </button>
+        <button class="action-btn" id="compareBtn">
+          <i class="fas fa-balance-scale"></i> Compare
+        </button>
+      </div>
     </div>
+    
+    <div class="advanced-filter-section" id="advancedFilterSection">
+      <div class="advanced-filter-header">
+        <h3>Advanced Filters</h3>
+        <button class="action-btn" onclick="document.getElementById('advancedFilterSection').classList.remove('active')">
+          <i class="fas fa-times"></i> Close
+        </button>
+      </div>
+      <div class="advanced-filter-content">
+        <div class="filter-group">
+          <label for="minRating">Min Rating</label>
+          <div class="range-container">
+            <input type="range" id="minRating" min="0" max="5" step="0.5" value="0">
+            <span class="range-value">0</span>
+          </div>
+        </div>
+        <div class="filter-group">
+          <label for="maxRating">Max Rating</label>
+          <div class="range-container">
+            <input type="range" id="maxRating" min="0" max="5" step="0.5" value="5">
+              <span class="range-value">5</span>
+            </div>
+        </div>
+        <div class="filter-group">
+          <label for="creatorFilter">Creator</label>
+          <input type="text" id="creatorFilter" placeholder="Filter by creator">
+        </div>
+        <div class="filter-group">
+          <label for="verifierFilter">Verifier</label>
+          <input type="text" id="verifierFilter" placeholder="Filter by verifier">
+        </div>
+        <div class="filter-group">
+          <label for="tagFilter">Tags</label>
+          <input type="text" id="tagFilter" placeholder="Filter by tags">
+        </div>
+        <div class="filter-group">
+          <label for="hasVideo">Has Video</label>
+          <input type="checkbox" id="hasVideo">
+        </div>
+        <div class="filter-group">
+          <label for="completedFilter">Completion Status</label>
+          <select id="completedFilter">
+            <option value="all">All</option>
+            <option value="completed">Completed</option>
+            <option value="not-completed">Not Completed</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="itemsPerPage">Items Per Page</label>
+          <select id="itemsPerPage">
+            <option value="6">6</option>
+            <option value="12" selected>12</option>
+            <option value="24">24</option>
+            <option value="48">48</option>
+          </select>
+        </div>
+        <div class="filter-actions">
+          <button class="action-btn" id="applyFilters">
+            <i class="fas fa-check"></i> Apply Filters
+          </button>
+          <button class="action-btn" id="resetFilters">
+            <i class="fas fa-redo"></i> Reset
+          </button>
+        </div>
+      </div>
+    </div>
+    
     <div class="demon-grid" id="demonCardGrid">
-      <!-- Cards generated here -->
+      <!-- Cards will be generated here -->
       <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); margin-top: 2rem;" id="loadingMsg">
+        <div class="loading-spinner"></div>
         Loading demons...
       </div>
     </div>
-    <!-- Modal for YouTube video -->
-    <div id="videoModal" class="modal">
-      <div class="modal-content">
-        <button class="modal-close" id="closeModal" aria-label="Close Video">&times;</button>
+    
+    <div class="pagination" id="pagination">
+      <!-- Pagination will be generated here -->
+    </div>
+  </main>
+  
+  <!-- Modal for YouTube video -->
+  <div id="videoModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Level Video</h3>
+        <button class="modal-close" id="closeVideoModal" aria-label="Close Modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
         <iframe id="youtubeFrame" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
       </div>
     </div>
-  </main>
+  </div>
+  
+  <!-- Modal for level details -->
+  <div id="detailsModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="detailsModalTitle">Level Details</h3>
+        <button class="modal-close" id="closeDetailsModal" aria-label="Close Modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="level-details" id="levelDetails">
+          <!-- Details will be populated here -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-secondary" id="closeDetails">Close</button>
+        <button class="modal-btn modal-btn-primary" id="watchVideo">Watch Video</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal for comparison -->
+  <div id="compareModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Compare Levels</h3>
+        <button class="modal-close" onclick="document.getElementById('compareModal').classList.remove('active'); document.body.style.overflow = '';">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="comparison-container" id="comparisonContainer">
+          <!-- Comparison cards will be populated here -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn modal-btn-primary" onclick="exportComparison()">Export Comparison</button>
+        <button class="modal-btn modal-btn-secondary" onclick="document.getElementById('compareModal').classList.remove('active'); document.body.style.overflow = '';">Close</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+  
+  <footer>
+    <div class="footer-content">
+      <div>
+        &copy; <span id="footerYear"></span> FrGDPS Demonlist. All rights reserved.
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link" title="Discord">
+          <i class="fab fa-discord"></i>
+        </a>
+        <a href="#" class="social-link" title="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="#" class="social-link" title="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="social-link" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="script.js"></script>
   <script>
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Sidebar nav
-    const sidebar = document.getElementById('sidebarNav');
-    const openSidebarBtn = document.getElementById('openSidebar');
-    const closeSidebarBtn = document.getElementById('closeSidebar');
-    openSidebarBtn.onclick = () => sidebar.classList.add('active');
-    closeSidebarBtn.onclick = () => sidebar.classList.remove('active');
-    // Close sidebar on click outside
-    document.addEventListener('click', (e) => {
-      if (
-        sidebar.classList.contains('active') &&
-        !sidebar.contains(e.target) &&
-        e.target !== openSidebarBtn && !openSidebarBtn.contains(e.target)
-      ) sidebar.classList.remove('active');
+    // Export functionality
+    document.getElementById('exportBtn').addEventListener('click', exportData);
+    
+    // Items per page change
+    document.getElementById('itemsPerPage').addEventListener('change', (e) => {
+      ITEMS_PER_PAGE = parseInt(e.target.value);
+      localStorage.setItem('pageSize', ITEMS_PER_PAGE);
+      CURRENT_PAGE = 1;
+      renderCards();
+      renderPagination();
     });
-
-    // Modal logic
-    const modal = document.getElementById('videoModal');
-    const youtubeFrame = document.getElementById('youtubeFrame');
-    const closeModalBtn = document.getElementById('closeModal');
-    function openModal(videoId) {
-      youtubeFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
+    
+    // Achievements link
+    document.getElementById('achievementsLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      showAchievementsModal();
+    });
+    
+    // Settings link
+    document.getElementById('settingsLink').addEventListener('click', (e) => {
+      e.preventDefault();
+      showSettingsModal();
+    });
+    
+    // Update username display
+    const usernameDisplay = document.getElementById('usernameDisplay');
+    const userLevel = document.getElementById('userLevel');
+    const userExperience = document.getElementById('userExperience');
+    
+    if (usernameDisplay && USER_PROFILE.username !== 'Guest') {
+      usernameDisplay.textContent = USER_PROFILE.username;
     }
-    function closeModal() {
-      modal.classList.remove('active');
-      youtubeFrame.src = '';
-      document.body.style.overflow = '';
+    
+    if (userLevel) {
+      userLevel.textContent = USER_PROFILE.level;
     }
-    closeModalBtn.onclick = closeModal;
-    modal.onclick = (e) => { if(e.target === modal) closeModal(); }
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
-
-    // YouTube helpers
-    function getYouTubeId(url) {
-      if(!url) return null;
-      const regExp = /^.*(?:youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]{11}).*/;
-      const match = url.match(regExp);
-      return (match && match[1]) ? match[1] : null;
+    
+    if (userExperience) {
+      userExperience.textContent = USER_PROFILE.experience;
     }
-    function getYouTubeThumbnail(videoId) {
-      return `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-    }
-
-    // Data logic
-    const BASE_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSDN7HUdFLEi7P5CkSFXFz_b16Os_8hdEItayViA0TfNze8nudO6sxlJgL9h2K8gkYMQah6RS1KXvL2/pub?gid=1550981254&single=true&output=csv';
-    const cardGrid = document.getElementById('demonCardGrid');
-    const totalEl = document.getElementById('totalDemons');
-    const extremeEl = document.getElementById('extremeDemons');
-    const lastEl = document.getElementById('lastUpdated');
-    const searchInput = document.getElementById('searchInput');
-    const loadingMsg = document.getElementById('loadingMsg');
-
-    function formatDate(d) {
-      return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-    }
-    let DEMON_DATA = [];
-
-    function renderCards(data) {
-      cardGrid.innerHTML = '';
-      if(!data.length) {
-        cardGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted);margin-top:2rem;">No demon found.</div>';
-        return;
-      }
-      let idx = 1, extremeCount = 0;
-      data.forEach(row => {
-        const name = row['Level'] || '-';
-        const id = row['ID Level'] || '-';
-        const creator = row['Creators'] || '-';
-        const verifier = row['Display Nickname'] || creator;
-        const videoUrl = row['Video Link'] || '';
-        const difficulty = (row['Level Placement Opinion'] || 'Extreme').toLowerCase();
-        if (difficulty === 'extreme') extremeCount++;
-
-        const videoId = getYouTubeId(videoUrl);
-        // Card HTML
-        const card = document.createElement('div');
-        card.className = 'demon-card';
-
-        // Rank badge
-        const rankDiv = document.createElement('div');
-        rankDiv.className = 'card-rank';
-        rankDiv.textContent = idx;
-        card.appendChild(rankDiv);
-
-        // Thumbnail
-        if (videoId) {
-          const thumbWrap = document.createElement('div');
-          thumbWrap.style.position = 'relative';
-
-          const thumb = document.createElement('img');
-          thumb.className = 'card-thumb';
-          thumb.src = getYouTubeThumbnail(videoId);
-          thumb.alt = `Preview for ${name}`;
-          thumb.title = "Play video";
-          thumb.onclick = () => openModal(videoId);
-          thumbWrap.appendChild(thumb);
-
-          // Play overlay
-          const playBtn = document.createElement('div');
-          playBtn.className = 'play-btn-overlay';
-          playBtn.innerHTML = '<i class="fas fa-play"></i>';
-          thumbWrap.appendChild(playBtn);
-
-          card.appendChild(thumbWrap);
-        } else {
-          const noVid = document.createElement('div');
-          noVid.className = 'no-video-thumb';
-          noVid.textContent = "No Video";
-          card.appendChild(noVid);
-        }
-
-        // Content
-        const content = document.createElement('div');
-        content.className = 'card-content';
-        // Title
-        const title = document.createElement('div');
-        title.className = 'level-title';
-        title.textContent = name;
-        content.appendChild(title);
-        // Diff/ID Row
-        const infoRow = document.createElement('div');
-        infoRow.className = 'level-info-row';
-        const diffSpan = document.createElement('span');
-        diffSpan.className = `diff-pill ${difficulty}`;
-        diffSpan.textContent = difficulty;
-        infoRow.appendChild(diffSpan);
-        const idSpan = document.createElement('span');
-        idSpan.className = 'lvl-id-badge';
-        idSpan.textContent = `ID: ${id}`;
-        infoRow.appendChild(idSpan);
-        content.appendChild(infoRow);
-        // Creator/Verifier
-        const creatorRow = document.createElement('div');
-        creatorRow.className = 'creator-row';
-        creatorRow.innerHTML =
-          `<span title="Creator"><i class="fas fa-user-edit"></i> ${creator}</span>` +
-          `<span title="Verifier"><i class="fas fa-check-circle"></i> ${verifier}</span>`;
-        content.appendChild(creatorRow);
-
-        card.appendChild(content);
-        cardGrid.appendChild(card);
-        idx++;
-      });
-      totalEl.textContent = data.length;
-      extremeEl.textContent = data.filter(r => (r['Level Placement Opinion']||'').toLowerCase() === 'extreme').length;
-      lastEl.textContent = formatDate(new Date());
-    }
-
-    function filterAndRender() {
-      const term = searchInput.value.trim().toLowerCase();
-      if(!term) { renderCards(DEMON_DATA); return; }
-      const filtered = DEMON_DATA.filter(row =>
-        Object.values(row).join(' ').toLowerCase().includes(term)
-      );
-      renderCards(filtered);
-    }
-
-    searchInput.addEventListener('input', filterAndRender);
-
-    function loadData() {
-      loadingMsg.style.display = '';
-      Papa.parse(BASE_CSV_URL, {
-        download: true,
-        header: true,
-        complete: res => {
-          const valid = res.data.filter(r => r.Level);
-          DEMON_DATA = valid;
-          renderCards(valid);
-          loadingMsg.style.display = 'none';
-        },
-        error: err => {
-          cardGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color:var(--hard);margin:2rem 0;">Error loading data</div>';
-          loadingMsg.style.display = 'none';
-        }
-      });
-    }
-    loadData();
-    setInterval(loadData, 300000);
   </script>
 </body>
 </html>
